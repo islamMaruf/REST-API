@@ -18,6 +18,8 @@ app.use(bodyParser.json());
 
 
 
+
+
 //middleware
 // app.use((req, res, next) => {
 //     console.log('I am a middleware function');
