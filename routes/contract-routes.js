@@ -5,7 +5,7 @@ const contract = []
 //GET
 router.get('/', (req, res, next) => {
     res.status(200).json({
-        contract
+        message : 'show all contact'
     })
 })
 
@@ -16,9 +16,10 @@ router.post('/', (req, res, next) => {
         name: req.body.name,
         email:req.body.email
     })
-    
+    console.log(contract)
     res.status(201).json({
-        message: "data saved"
+        message: "data saved",
+        contract : contract
     
     })
 });
