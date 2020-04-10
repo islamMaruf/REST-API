@@ -21,10 +21,11 @@ const contractSchema = new Schema({
             validator : (v) => {
                 return validate.isEmail(v);
             },
-            message : `${v} is not email`
+            message : `is not email`
         }
     }
 });
-const  Contact = mongoose.model('Contact','contractSchema');
+
+const  Contact = mongoose.model('Contact',contractSchema);
 
 module.exports = Contact;

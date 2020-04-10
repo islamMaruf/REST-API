@@ -1,11 +1,9 @@
-
 const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const app = express();
 const mongoose = require('mongoose');
-
 const port = process.env.port || 3600;
 //set up for cross development
 app.use(cors());
@@ -19,17 +17,17 @@ app.use((req, res, next) => {
     console.log('I am a middleware function');
     next();
 })
-mongoose.connect('mongodb://localhost:27017/contacts-db');
+
+mongoose.connect('mongodb://localhost:27017/contacts',{'useNewUrlParser':true});
 const db = mongoose.connection;
 db.on('error',function (err) {
     console.log(err);
 })
+
 db.once('open',() => (console.log('db open')));
 
-const contactRoute = require('./routes/contract-routes');
+const contactRoute = require('./routes/contact');
  app.use('/api/contacts/',contactRoute)
-
-
 
 app.get('/', (req,res) => {
     res.send('<h1>Hello</h1>')
