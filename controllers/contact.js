@@ -14,7 +14,6 @@ const allContacts = (req, res, next) => {
         })
     })
 }
-
 const createContact = (req, res, next) => {
 
     const contact = new Contact({
@@ -92,7 +91,6 @@ const updateContact = (req, res, next) => {
     })
 
 }
-
 
 module.exports = {
     allContacts,
