@@ -26,12 +26,6 @@ db.on('error',function (err) {
 })
 db.once('open',() => (console.log('db open')));
 
-
-const ContactModel = mongoose.model('Contact',contractSchema);
-
-
-
-
 const contactRoute = require('./routes/contract-routes');
  app.use('/api/contacts/',contactRoute)
 
