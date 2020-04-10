@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 const allUser = (req, res, next) => {
     User.find()
@@ -21,7 +22,6 @@ const login = (req, res, next) => {
     User.findOne({email})
         .then(user => {
             if (user) {
-                console.log(user.password,user,password)
                 bcrypt.compare(password, user.password, (err, result) => {
                     if (err) {
                         res.json({
@@ -30,11 +30,13 @@ const login = (req, res, next) => {
                         })
                     }
                     if (result) {
+                        let _token = jwt.sign({email: user.email, id: user._id}, 'SECRET',{expiresIn: '2h'});
                         res.json({
                             message: 'login successfully',
+                            token : _token,
                             result
                         })
-                    }else {
+                    } else {
                         res.json({
                             message: 'login is not succeed',
                             result
