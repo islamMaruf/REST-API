@@ -30,7 +30,7 @@ db.once('open', () => (console.log('db open')));
 const contactRoute = require('./routes/contact');
 const userRoute = require('./routes/user');
 app.use('/api/contacts/', contactRoute)
-app.use('api/users/',userRoute)
+app.use('/api/users/',userRoute)
 
 
 app.get('/', (req, res) => {
