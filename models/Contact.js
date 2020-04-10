@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
 const  validate = require('validator');
+const Schema = mongoose.Schema;
 const contractSchema = new Schema({
     name: {
         type: String,
@@ -21,7 +21,7 @@ const contractSchema = new Schema({
             validator : (v) => {
                 return validate.isEmail(v);
             },
-            message : `is not email`
+            message : `{VALUE} is not email`
         }
     }
 });
